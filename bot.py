@@ -9,7 +9,7 @@ from flask import Flask, request
 # Constant for Shareus API key
 SHAREUS_API_KEY = "N5WHqC160Uh4Mdp2WrRjieFPfEg1"
 # Hardcoded bot token
-BOT_TOKEN = "8063513834:AAFzW5pRNiRSRQlOJ9v1dMSq7jnkwFxTbuE"
+BOT_TOKEN = "7828698807:AAEv60Zf4H086_t8kRW-xobj-tvEkfI8LCY"
 
 # Flask web server
 app = Flask(__name__)
@@ -150,7 +150,8 @@ def main() -> None:
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     application.add_handler(CallbackQueryHandler(button_callback))  # Handles button clicks
 
-    # Start the bot
+    # Set the webhook URL
+    webhook_url = f"https:/fun.vercel.app/webhook"  # Replace with your actual Vercel URL
     application.run_webhook(listen='0.0.0.0', port=int(os.environ.get("PORT", 8443)), url_path=BOT_TOKEN)
 
 if __name__ == '__main__':
